@@ -13,12 +13,12 @@ permissions:
 
 jobs:
 
-  main:
+  test:
     name: CI Workflow Test
     uses: ./.github/workflows/ci-backend-test.yml
   
   merge:
-    needs: main
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

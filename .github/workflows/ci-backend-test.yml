@@ -1,25 +1,32 @@
-name: CI Back-end Test
+name: CI Back-end Compile and Test
 
 on:
   push:
     branches:
-      - '**'
-      - '!main'
+      - 'main'
     paths:
       - 'sgcmapi/**'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'sgcmapi/**'
+  workflow_call:
 
 jobs:
 
   main:
     name: CI Workflow Main
     uses: ./.github/workflows/ci-backend.yml
-  
-  merge:
+
+  build:
     needs: main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Maven Compile/Test
+        uses: actions/checkout@v4
+      - name: Maven Compile
         working-directory: sgcmapi/
-        run: mvn compile test
+        run: mvn compile
+      - name: Maven Test
+        working-directory: sgcmapi/
+        run: mvn test
