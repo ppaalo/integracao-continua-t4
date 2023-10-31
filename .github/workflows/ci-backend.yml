@@ -23,6 +23,3 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Maven Compile/Test
-        working-directory: sgcmapi/
-        run: mvn compile test
