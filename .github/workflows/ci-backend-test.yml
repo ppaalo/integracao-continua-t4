@@ -1,4 +1,4 @@
-name: CI Back-end Compile and Test
+name: CI Back-end Test
 
 on:
   push:
@@ -29,9 +29,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Maven Compile
-        working-directory: sgcmapi/
-        run: mvn compile
       - name: Maven Test
         working-directory: sgcmapi/
         run: mvn test

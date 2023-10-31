@@ -1,4 +1,4 @@
-name: CI Back-end
+name: CI Back-end Compile
 
 on:
   push:
@@ -23,3 +23,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Maven Compile
+        working-directory: sgcmapi/
+        run: mvn compile
