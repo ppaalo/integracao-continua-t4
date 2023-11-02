@@ -1,6 +1,6 @@
 FROM node:18-slim AS builder
-COPY . .
-RUN npm cache clean --force.
+COPY . /home/app/
+WORKDIR /home/app
 RUN npm install
 RUN npm run build
 
