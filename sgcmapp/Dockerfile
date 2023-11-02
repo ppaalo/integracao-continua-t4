@@ -1,12 +1,14 @@
-FROM node:latest AS build
-# WORKDIR /dist/sgcmapp
-RUN npm cache clean --force
+FROM node:latest as builder
 
-# COPY . .
-RUN npm install -g @angular/cli@16
+WORKDIR /app
+COPY . .
 RUN npm install
-RUN ng build
+RUN npm run build
 
-COPY --from=build /dist/sgcmapp/ /usr/share/nginx/html
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+
+# Nginx image
+FROM nginx:latest
+
+COPY --from=builder /app/dist/ngApp /usr/share/nginx/html/
+
 EXPOSE 80
