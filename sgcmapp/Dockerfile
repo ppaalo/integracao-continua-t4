@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build
+FROM node:latest AS build
 # WORKDIR /dist/sgcmapp
 RUN npm cache clean --force
 
