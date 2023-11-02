@@ -1,5 +1,5 @@
 FROM node:18-alpine AS build
-WORKDIR /dist/src/app
+WORKDIR /dist/sgcmapp
 RUN npm cache clean --force
 
 COPY . .
@@ -7,6 +7,6 @@ RUN npm install -g @angular/cli@16
 RUN npm install
 RUN ng build
 
-COPY --from=build /dist/src/app/dist/sgcmapp/ /usr/share/nginx/html
+COPY --from=build /dist/sgcmapp/ /usr/share/nginx/html
 COPY /nginx.conf  /etc/nginx/conf.d/default.conf
 EXPOSE 80
