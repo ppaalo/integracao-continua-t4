@@ -1,8 +1,8 @@
 FROM node:18-alpine AS build
-WORKDIR /dist/sgcmapp
+# WORKDIR /dist/sgcmapp
 RUN npm cache clean --force
 
-COPY . .
+# COPY . .
 RUN npm install -g @angular/cli@16
 RUN npm install
 RUN ng build
