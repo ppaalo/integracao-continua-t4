@@ -9,6 +9,6 @@ RUN npm run build
 # Nginx image
 FROM nginx:latest
 
-COPY --from=builder /app/dist/ngApp /usr/share/nginx/html/
+COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 EXPOSE 80
